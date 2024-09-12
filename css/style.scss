@@ -1,0 +1,97 @@
+@import "./color";
+
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background-image: url('../Resources/bg-guess-the-word.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    .main{
+        margin: auto;
+        padding: 30px;
+        width: 390px;
+        height: auto;
+        background-color: $black;
+        border-radius: 14px;
+        .image{
+            display: flex;
+            justify-content: center;
+        }
+        .scramblle_word{
+            background-color: $gray;
+            color: $silver;
+            margin: 30px auto;
+            width: auto;
+            height: 70px;
+            border-radius: 6px;
+        }
+        .try_mistake{
+            display: flex;
+            justify-content: space-evenly;
+            color: $silver;
+            .try_box{
+                display: flex;
+                width: 170px;
+                p{
+                    margin: 0;
+                    font-size: 13px;
+                }
+                .try_circles{
+                    display: flex;
+                    align-items: center;
+                    margin: 0 7px;
+                    .try_circle{
+                        background-color: $gray;
+                        margin: 0 3px;
+                        width: 6px;
+                        height: 6px;
+                        border-radius: 3px;
+                    }
+                }
+            }
+            .mistake_box{
+                width: 170px;
+                p{
+                    margin: 0;
+                    text-align: end;
+                    font-size: 13px;
+                }
+            }
+        }
+        .input{
+            display: flex;
+            justify-content: center;
+            margin: 40px 0 60px 0;
+            .input_box{
+                width: 40px;
+                height: 40px;
+                margin: 0 5px;
+                border: 2px solid $gray;
+                border-radius: 7px;
+            }
+        }
+        .buttons{
+            display: flex;
+            justify-content: space-evenly;
+            margin: 10px 0;
+            .button{
+                width: 120px;
+                height: 40px;
+                background-color: $pink;
+                color: $white;
+                border: 0;
+                box-shadow: 0 4px 0 $dark_purple;
+                transition: box-shadow 0.1s ease;
+                border-radius: 10px;
+                &:active {
+                    box-shadow: none;
+                    transform: translateY(2px);
+                }
+            }
+        }
+    }
+}
