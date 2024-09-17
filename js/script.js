@@ -86,18 +86,36 @@ inputBoxes.forEach((box, index) => {
                 alert('🎉 Success');
             } else {
                 counter += 1;
-                tryText.textContent = `Tries(${counter}/6):`
-                tryCircle[counter-1].style.backgroundColor = "#7429C6";
-                mistakeText.textContent += ` ${guessedWord},`
-                inputBoxes.forEach((box, index) => {
-                    box.value = '';
-                    if (index === 0) {
-                        box.disabled = false;
-                        box.focus();
-                    } else {
-                        box.disabled = true;
+                if (counter === 7) {
+                    mistakeText.textContent = 'Mistakes:'
+                    tryText.textContent = `Tries(1/6):`
+                    for (let i = 1; i < 6; i++) {
+                        tryCircle[i].style.backgroundColor = "#4A5567";
                     }
-                });
+                    counter = 1;
+                    inputBoxes.forEach((box, index) => {
+                        box.value = '';
+                        if (index === 0) {
+                            box.disabled = false;
+                            box.focus();
+                        } else {
+                            box.disabled = true;
+                        }
+                    });
+                } else {
+                    tryText.textContent = `Tries(${counter}/6):`
+                    tryCircle[counter-1].style.backgroundColor = "#7429C6";
+                    mistakeText.textContent += ` ${guessedWord},`
+                    inputBoxes.forEach((box, index) => {
+                        box.value = '';
+                        if (index === 0) {
+                            box.disabled = false;
+                            box.focus();
+                        } else {
+                            box.disabled = true;
+                        }
+                    });
+                }
             }
         }
     });
@@ -139,7 +157,5 @@ resetButton.addEventListener('click', () => {
         }
     });
 });
-
-
 
 
