@@ -22,12 +22,17 @@ body{
             justify-content: center;
         }
         .scramblle_word{
+            display: flex;
             background-color: $gray;
             color: $silver;
             margin: 30px auto;
             width: auto;
             height: 70px;
             border-radius: 6px;
+            p{
+                margin: auto;
+                font-size: 45px;
+            }
         }
         .try_mistake{
             display: flex;
@@ -71,7 +76,13 @@ body{
                 height: 40px;
                 margin: 0 5px;
                 border: 2px solid $gray;
+                background-color: $black;
+                color: $white;
                 border-radius: 7px;
+                &:focus{
+                    border: 2px solid $dark_purple;
+                    outline: none;
+                }
             }
         }
         .buttons{
@@ -87,6 +98,7 @@ body{
                 box-shadow: 0 4px 0 $dark_purple;
                 transition: box-shadow 0.1s ease;
                 border-radius: 10px;
+                cursor: pointer;
                 &:active {
                     box-shadow: none;
                     transform: translateY(2px);
