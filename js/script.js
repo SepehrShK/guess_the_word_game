@@ -30,10 +30,9 @@ function shuffle(word) {
 }
 
 let randomWord = getRandomWord();
-console.log(randomWord);
+console.log(`the answer is (${randomWord}) you cheater`);
 
 let shuffledWord = shuffle(randomWord);
-console.log(shuffledWord);
 
 
 const scramblleWord = document.querySelector('.scramblle_word p')
@@ -55,6 +54,10 @@ for (let i = 0; i < shuffledWord.length; i++) {
 
 
 const inputBoxes = document.querySelectorAll('.input_box');
+const mistakeText = document.querySelector('.mistake_text');
+const tryText = document.querySelector('.try_text');
+const tryCircle = document.querySelectorAll('.try_circle');
+let counter = 1;
 
 window.addEventListener('load', () => {
     inputBoxes[0].disabled = false;
@@ -71,6 +74,32 @@ inputBoxes.forEach((box, index) => {
             nextBox.focus();
             currentBox.disabled = true;
         }
+        if (index === randomWord.length - 1 && currentBox.value.length === 1) {
+            let guessedWord = ''
+            inputBoxes.forEach((input) => {
+                guessedWord += input.value
+            });
+            console.log(guessedWord);
+
+            if (guessedWord === randomWord) {
+                window.location.reload();
+                alert('🎉 Success');
+            } else {
+                counter += 1;
+                tryText.textContent = `Tries(${counter}/6):`
+                tryCircle[counter-1].style.backgroundColor = "#7429C6";
+                mistakeText.textContent += ` ${guessedWord},`
+                inputBoxes.forEach((box, index) => {
+                    box.value = '';
+                    if (index === 0) {
+                        box.disabled = false;
+                        box.focus();
+                    } else {
+                        box.disabled = true;
+                    }
+                });
+            }
+        }
     });
 
     box.addEventListener('keydown', (event) => {
@@ -83,6 +112,33 @@ inputBoxes.forEach((box, index) => {
 });
 
 
+
+const reloadButton = document.querySelectorAll('.button')[0]
+const resetButton = document.querySelectorAll('.button')[1]
+
+// Reload button functionality: Reload the page
+reloadButton.addEventListener('click', () => {
+    window.location.reload();
+});
+
+// Reset button functionality: Clear all inputs and disable them except the first one
+resetButton.addEventListener('click', () => {
+    mistakeText.textContent = 'Mistakes:'
+    tryText.textContent = `Tries(1/6):`
+    for (let i = 1; i < 6; i++) {
+        tryCircle[i].style.backgroundColor = "#4A5567";
+    }
+    counter = 1;
+    inputBoxes.forEach((box, index) => {
+        box.value = '';
+        if (index === 0) {
+            box.disabled = false;
+            box.focus();
+        } else {
+            box.disabled = true;
+        }
+    });
+});
 
 
 
