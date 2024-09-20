@@ -44,6 +44,7 @@ body{
                 p{
                     margin: 0;
                     font-size: 13px;
+                    align-content: center;
                 }
                 .try_circles{
                     display: flex;
@@ -116,6 +117,12 @@ body{
     body{
         .main{
             width: 270px;
+            .input{
+                .input_box{
+                    width: 25px;
+                    height: 25px;
+                }
+            }
         }
     }
 }
