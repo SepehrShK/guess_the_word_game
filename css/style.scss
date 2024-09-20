@@ -82,6 +82,7 @@ body{
                 background-color: $black;
                 color: $white;
                 border-radius: 7px;
+                text-align: center;
                 &:focus{
                     border: 2px solid $dark_purple;
                     outline: none;

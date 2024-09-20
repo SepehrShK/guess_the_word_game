@@ -79,7 +79,8 @@ inputBoxes.forEach((box, index) => {
             inputBoxes.forEach((input) => {
                 guessedWord += input.value
             });
-            console.log(guessedWord);
+
+            guessedWord = guessedWord.toLowerCase();
 
             if (guessedWord === randomWord) {
                 window.location.reload();
